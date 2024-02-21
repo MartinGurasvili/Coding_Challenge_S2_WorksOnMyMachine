@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('blurry-gradient-haikei.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #e4e4e4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+/* Styles for the icon */
+.icon {
+    display: inline-block;
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Adjust the size as needed */
+
+    background-size: cover;
+    margin-right: 10px; /* Spacing between the icon and description */
+}
+
+.icon-button {
+    display: inline-flex; /* Use flexbox for easier vertical centering */
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+    width: 65%;
+}
+
+.icon-button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+/* Styles for the description */
+.description {
+    vertical-align: middle; /* Align the description vertically */
+}
+}
