@@ -9,14 +9,60 @@
 <body>
     <center><div class="container">
         <h1>Password Generator</h1>
-        <h2>Coding Challenge Season 2</h2>
+        <!-- <h2>Coding Challenge Season 2</h2> -->
         <br>
-        <p>Click to Generate Password</p>
-        <br>
-        <button class="icon-button">
-            <i class="icon" style="background-image: url('https://gist.githubusercontent.com/solkin/51a2c444d92d98b23260be170d28cca7/raw/160df10c958319f811397c8dcf461b7e7ac06a7c/lock.svg');"></i>
+        {% if passs_gen %}
+            <p>Generated Password: {{ passs_gen }}</p>
+        {% endif %}
+        <form action="{{ url_for('passgen') }}" method="post">
+            <h3>Include Capital Letters?</h3>
+            <label>
+                <input type="radio" name="include_caps" value="1" checked> Yes, please!
+            </label>
+            <label>
+                <input type="radio" name="include_caps" value="0"> Nooo
+            </label>
+            <br>
+            <h3>Include Special Characters?</h3>
+            <label>
+                <input type="radio" name="include_special" value="1" checked> Yep
+            </label>
+            <label>
+                <input type="radio" name="include_special" value="0"> NO!
+            </label>
+            <br>
+            <h3>Include Digits?</h3>
+            <label>
+                <input type="radio" name="include_digits" value="1" checked> Ya
+            </label>
+            <label>
+                <input type="radio" name="include_digits" value="0"> Nein
+            </label>
+            <br>
+            <h3>Choose Password Length:</h3>
+            <input type="range" name="length" min="5" max="20" value="12">
+            <p>Selected Length: <span id="lengthDisplay">12</span></p>
+        
+            <script>
+                // JavaScript to update the display value when the slider is moved
+                const lengthSlider = document.querySelector('input[name="length"]');
+                const lengthDisplay = document.getElementById('lengthDisplay');
+        
+                lengthSlider.addEventListener('input', () => {
+                    lengthDisplay.textContent = lengthSlider.value;
+                });
+            </script>
+        
+            <br>
+            <button type = submit class="icon-button">
+                <i class="icon" style="background-image: url('https://gist.githubusercontent.com/solkin/51a2c444d92d98b23260be170d28cca7/raw/160df10c958319f811397c8dcf461b7e7ac06a7c/lock.svg');"></i>
             <span class="description">Generate Password</span>
         </button>
+        </form>
+        <br>
+        <!-- {% if passs_gen %}
+            <p>Generated Password: {{ passs_gen }}</p>
+        {% endif %} -->
     </div></center>
 </body>
 </html>
