@@ -26,7 +26,7 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: #007bff;
 }
 
 p {
@@ -62,4 +62,28 @@ p {
 /* Styles for the description */
 .description {
     vertical-align: middle; /* Align the description vertically */
+}
+.password-box {
+    position: relative;
+    max-width: 300px;
+    padding: 20px ;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+#password {
+    margin-bottom: 10px;
+}
+#copy-button {
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+#copy-button:hover {
+    background-color: #45a049;
 }

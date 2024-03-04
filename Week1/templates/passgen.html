@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask App</title>
+    <title>Password Generator</title>
+    <link rel="icon" 
+      type="image/png" 
+      href="{{ url_for('static', filename='verify.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -11,9 +14,7 @@
         <h1>Password Generator</h1>
         <!-- <h2>Coding Challenge Season 2</h2> -->
         <br>
-        {% if passs_gen %}
-            <p>Generated Password: {{ passs_gen }}</p>
-        {% endif %}
+        
         <form action="{{ url_for('passgen') }}" method="post">
             <h3>Include Capital Letters?</h3>
             <label>
@@ -40,7 +41,7 @@
             </label>
             <br>
             <h3>Choose Password Length:</h3>
-            <input type="range" name="length" min="5" max="20" value="12">
+            <input type="range" name="length" min="5" max="40" value="12">
             <p>Selected Length: <span id="lengthDisplay">12</span></p>
         
             <script>
@@ -60,9 +61,34 @@
         </button>
         </form>
         <br>
+        {% if passs_gen %}
+        <div class="password-box">
+            <div id="password">{{ passs_gen }}</div>
+            <button id="copy-button" onclick="copyPassword()">Copy to Clipboard</button>
+            <div id="copy-feedback" style="display: none; color: green;">Copied to clipboard!</div>
+        </div>
+        {% endif %}
         <!-- {% if passs_gen %}
             <p>Generated Password: {{ passs_gen }}</p>
         {% endif %} -->
     </div></center>
 </body>
+<script>
+    function copyPassword() {
+        var passwordText = document.getElementById("password");
+        var range = document.createRange();
+        range.selectNode(passwordText);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+
+        // Show feedback
+        var copyFeedback = document.getElementById("copy-feedback");
+        copyFeedback.style.display = "block";
+        setTimeout(function(){
+            copyFeedback.style.display = "none";
+        }, 1500);
+    }
+</script>
 </html>
