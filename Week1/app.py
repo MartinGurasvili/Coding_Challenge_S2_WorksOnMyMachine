@@ -29,5 +29,9 @@ def passgen():
         return passs_gen(length, include_caps, include_special, include_digits)
     return render_template('passgen.html')
 
+@app.route('/tictactoe')
+def tictactoe():
+    return render_template('tictactoe.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
