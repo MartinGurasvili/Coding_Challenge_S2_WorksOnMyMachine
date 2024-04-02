@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <center><div class="container">
+        <h1>Tic Tac Toe</h1>
+        <br>
+        <!-- setting up the board -->
+        <table>
+            <tr>
+                <td><button class="cell" onclick="makeMove(0, 0)"></button></td>
+                <td><button class="cell" onclick="makeMove(0, 1)"></button></td>
+                <td><button class="cell" onclick="makeMove(0, 2)"></button></td>
+            </tr>
+            <tr>
+                <td><button class="cell" onclick="makeMove(1, 0)"></button></td>
+                <td><button class="cell" onclick="makeMove(1, 1)"></button></td>
+                <td><button class="cell" onclick="makeMove(1, 2)"></button></td>
+            </tr>
+            <tr>
+                <td><button class="cell" onclick="makeMove(2, 0)"></button></td>
+                <td><button class="cell" onclick="makeMove(2, 1)"></button></td>
+                <td><button class="cell" onclick="makeMove(2, 2)"></button></td>
+            </tr>
+        </table>
+        <br>
+        <button onclick="resetGame()">Reset Game</button>
+    </div></center>
+
+    <script>
+        let currentPlayer = 'X';
+        let board = [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
+        ];
+
+        function makeMove(row, col) {
+            if (board[row][col] === '') {
+                board[row][col] = currentPlayer;
+                document.querySelector(`[onclick="makeMove(${row}, ${col})"]`).innerHTML = currentPlayer;
+                checkWin();
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+        }
+
+        function checkWin() {
+            // rows
+            for (let i = 0; i < 3; i++) {
+                if (board[i][0] === board[i][1] && board[i][1] === board[i][2] && board[i][0] !== '') {
+                    alert(`${board[i][0]} wins!`);
+                    resetGame();
+                    return;
+                }
+            }
+            // columns
+            for (let j = 0; j < 3; j++) {
+                if (board[0][j] === board[1][j] && board[1][j] === board[2][j] && board[0][j] !== '') {
+                    alert(`${board[0][j]} wins!`);
+                    resetGame();
+                    return;
+                }
+            }
+            //  diagonals
+            if ((board[0][0] === board[1][1] && board[1][1] === board[2][2] && board[0][0] !== '') ||
+                (board[0][2] === board[1][1] && board[1][1] === board[2][0] && board[0][2] !== '')) {
+                alert(`${board[1][1]} wins!`);
+                resetGame();
+                return;
+            }
+            //  tie
+            let tie = true;
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    if (board[i][j] === '') {
+                        tie = false;
+                        break;
+                    }
+                }
+            }
+            if (tie) {
+                alert("It's a tie!");
+                resetGame();
+            }
+        }
+
+        function resetGame() {
+            board = [
+                ['', '', ''],
+                ['', '', ''],
+                ['', '', '']
+            ];
+            currentPlayer = 'X';
+            document.querySelectorAll('.cell').forEach(cell => {
+                cell.innerHTML = '';
+            });
+        }
+    </script>
+</body>
+</html>
