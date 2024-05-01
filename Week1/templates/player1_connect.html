@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Connect 4</title>
+        <link rel="icon" 
+      type="image/png" 
+      href="{{ url_for('static', filename='verify.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+
+        <div id = "gametags">
+
+            <h1 id = "status">{{status}}</h1>
+            <br>
+       
+            {% if status == 'Pick a colour to start game'%}
+                <button onclick="pickRed()" class = "options" style="color: red;"id = "red">red</button>
+                <button onclick="pickYellow()" class = "options" style="color: yellow;" id = "yellow">yellow</button>
+            {% endif %}
+            <br>
+            <br>
+            <a  id = "p2Link" onclick = "hideLink()" href = '/p2Join' target="_blank">Link for player 2</a>
+
+        </div>
+        
+
+        <div class = "board">
+            <table>
+                <tr id = '0'>
+                    <td onclick = "move(event)" class = "slot col1"></td>
+                    <td onclick = "move(event)" class = "slot col2"></td>
+                    <td onclick = "move(event)" class = "slot col3"></td>
+                    <td onclick = "move(event)" class = "slot col4"></td>
+                    <td onclick = "move(event)" class = "slot col5"></td>
+                    <td onclick = "move(event)" class = "slot col6"></td>
+                    <td onclick = "move(event)" class = "slot col7"></td>
+
+                </tr>
+                <tr id = '1'>
+                    <td onclick = "move(event)" class = "slot col1"></td>
+                    <td onclick = "move(event)" class = "slot col2"></td>
+                    <td onclick = "move(event)" class = "slot col3"></td>
+                    <td onclick = "move(event)" class = "slot col4"></td>
+                    <td onclick = "move(event)" class = "slot col5"></td>
+                    <td onclick = "move(event)" class = "slot col6"></td>
+                    <td onclick = "move(event)" class = "slot col7"></td>
+
+                </tr>
+                <tr id = '2'>
+                    <td onclick = "move(event)" class = "slot col1"></td>
+                    <td onclick = "move(event)" class = "slot col2"></td>
+                    <td onclick = "move(event)" class = "slot col3"></td>
+                    <td onclick = "move(event)" class = "slot col4"></td>
+                    <td onclick = "move(event)" class = "slot col5"></td>
+                    <td onclick = "move(event)" class = "slot col6"></td>
+                    <td onclick = "move(event)" class = "slot col7"></td>
+
+                </tr>
+                <tr id = '3'>
+                    <td onclick = "move(event)" class = "slot col1"></td>
+                    <td onclick = "move(event)" class = "slot col2"></td>
+                    <td onclick = "move(event)" class = "slot col3"></td>
+                    <td onclick = "move(event)" class = "slot col4"></td>
+                    <td onclick = "move(event)" class = "slot col5"></td>
+                    <td onclick = "move(event)" class = "slot col6"></td>
+                    <td onclick = "move(event)" class = "slot col7"></td>
+
+                </tr>
+                <tr id = '4'>
+                    <td onclick = "move(event)" class = "slot col1"></td>
+                    <td onclick = "move(event)" class = "slot col2"></td>
+                    <td onclick = "move(event)" class = "slot col3"></td>
+                    <td onclick = "move(event)" class = "slot col4"></td>
+                    <td onclick = "move(event)" class = "slot col5"></td>
+                    <td onclick = "move(event)" class = "slot col6"></td>
+                    <td onclick = "move(event)" class = "slot col7"></td>
+
+                </tr>
+                <tr id = '5'>
+                    <td onclick = "move(event)" class = "slot col1"></td>
+                    <td onclick = "move(event)" class = "slot col2"></td>
+                    <td onclick = "move(event)" class = "slot col3"></td>
+                    <td onclick = "move(event)" class = "slot col4"></td>
+                    <td onclick = "move(event)" class = "slot col5"></td>
+                    <td onclick = "move(event)" class = "slot col6"></td>
+                    <td onclick = "move(event)" class = "slot col7"></td>
+
+                </tr>
+            </table>
+        </div>
+        <script src="{{ url_for('static', filename = 'player1_connect.js') }}"></script>
+    </body>
+
+</html>
